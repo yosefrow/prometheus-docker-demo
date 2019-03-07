@@ -1,0 +1,30 @@
+version: '3'
+services:
+  exposer:
+    container_name: yosefrow_prometheus-exposer
+    hostname: exposer
+    build:
+      context: ./exposer
+    image: yosefrow/prometheus-exposer:1.0
+    ports:
+      - 8000:8000
+    network_mode: bridge
+    restart: unless-stopped
+  prometheus:
+    container_name: yosefrow_prometheus
+    hostname: exposer
+    build:
+      context: ./prometheus
+    image: yosefrow/prometheus:1.0
+    ports:
+      - 9090:9090
+    network_mode: bridge
+    restart: unless-stopped
+  grafana:
+    image: grafana/grafana:3.0.0-beta7
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=pass
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000
