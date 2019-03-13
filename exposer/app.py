@@ -29,6 +29,7 @@ def generate_random_metrics(histogram, gauge, counter):
     number = scaled_random(500)
     coin_toss = random.random()
 
+
     if coin_toss >= 0.5:
         gauge.inc(number)      # Increment by given value
     else:
@@ -45,9 +46,11 @@ def process_request(t):
 if __name__ == '__main__':
     # Start up the server to expose the metrics.
     start_http_server(8000)
-    # Generate some requests.
+
+    # Set default metrics    
+    gauge.set(25000)      # Set to a default value
+
+    # Generate some requests and random metrics.
     while True:
         generate_random_metrics(histogram, gauge, counter)
         process_request(random.random())
-
-
