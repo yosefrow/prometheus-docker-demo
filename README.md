@@ -31,6 +31,11 @@ Grafana's service is based on the official Grafana image and listens on port 300
 
 The Grafana main dashboard can be reached by visiting the url of the service ie. http://localhost:3000
 
+The default user and admin are
+
+- User: admin
+- Password: 1234
+
 ## Ensuring Persistence
 
 A data volume is created for the service in order to persist Grafana data after the container is removed.
