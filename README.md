@@ -9,11 +9,14 @@ This project comprises of three components which together create an interactive 
 
 The deployment scripts are designed to run in Linux
 
-To run the demo, just follow these steps:
+To run the demo, just run `./build.sh`
 
-1. git clone the repository to a local Linux environment 
-2. copy .env.example to .env and configure it by exposing available ports, etc.
-3. run `./build.sh` from the terminal. If you do not create a .env file, .env.example will be used
+## Basic Configuration
+
+You can *optionally* copy .env.example to .env and configure it to use available ports, etc.
+If you do not create a .env file, .env.example will be copied to .env automatically
+
+## Dashboard Login
 
 The Grafana main dashboard can be reached by visiting the url of the service ie. http://localhost:3000 by default.
 
