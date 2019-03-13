@@ -16,7 +16,7 @@ services:
   prometheus:
     container_name: yosefrow_prometheus-prometheus
     hostname: exposer
-    image: prom/prometheus:v2.1.0
+    image: prom/prometheus:v2.8.0
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
@@ -31,14 +31,16 @@ services:
 
   grafana:
     container_name: yosefrow_prometheus-grafana
-    image: grafana/grafana:3.0.0-beta7
+    image: grafana/grafana:6.0.1
     env_file:
       - ./.env
     depends_on:
       - prometheus
+    extra_hosts:
+      - "prometheus:172.17.0.1"
     volumes:
       - grafana_data:/var/lib/grafana
-#      - ./grafana/provisioning/:/etc/grafana/provisioning/
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
     ports:
       - 3000:3000
     network_mode: bridge
