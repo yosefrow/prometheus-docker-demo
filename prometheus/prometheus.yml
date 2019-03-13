@@ -37,6 +37,6 @@ scrape_configs:
     scrape_interval: 5s
 
     static_configs:
-      - targets: ['localhost:8000']
+      - targets: ['128.199.39.187:8000']
         labels:
             group: 'py_test'

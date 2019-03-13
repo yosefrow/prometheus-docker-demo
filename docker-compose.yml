@@ -6,25 +6,44 @@ services:
     build:
       context: ./exposer
     image: yosefrow/prometheus-exposer:1.0
+    env_file:
+      - ./.env
     ports:
       - 8000:8000
     network_mode: bridge
     restart: unless-stopped
+
   prometheus:
-    container_name: yosefrow_prometheus
+    container_name: yosefrow_prometheus-prometheus
     hostname: exposer
-    build:
-      context: ./prometheus
-    image: yosefrow/prometheus:1.0
+    image: prom/prometheus:v2.1.0
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    env_file:
+      - ./.env
+    depends_on:
+      - exposer
     ports:
       - 9090:9090
     network_mode: bridge
     restart: unless-stopped
+
   grafana:
+    container_name: yosefrow_prometheus-grafana
     image: grafana/grafana:3.0.0-beta7
-    environment:
-      - GF_SECURITY_ADMIN_PASSWORD=pass
+    env_file:
+      - ./.env
     depends_on:
       - prometheus
+    volumes:
+      - grafana_data:/var/lib/grafana
+#      - ./grafana/provisioning/:/etc/grafana/provisioning/
     ports:
       - 3000:3000
+    network_mode: bridge
+    restart: unless-stopped
+
+volumes:
+    prometheus_data: {}
+    grafana_data: {}
