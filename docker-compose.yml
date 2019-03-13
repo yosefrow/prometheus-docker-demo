@@ -1,11 +1,11 @@
 version: '3'
 services:
   exposer:
-    container_name: yosefrow_prometheus-exposer
+    container_name: ${GROUP}_${PROJECT}-exposer
     hostname: exposer
     build:
       context: ./exposer
-    image: yosefrow/prometheus-exposer:1.0
+    image: $EXPOSER_IMAGE
     env_file:
       - ./.env
     ports:
@@ -13,9 +13,9 @@ services:
     restart: unless-stopped
 
   prometheus:
-    container_name: yosefrow_prometheus-prometheus
-    hostname: exposer
-    image: prom/prometheus:v2.8.0
+    container_name: ${GROUP}_${PROJECT}-prometheus
+    hostname: prometheus
+    image: $PROMETHEUS_IMAGE
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
@@ -28,7 +28,8 @@ services:
     restart: unless-stopped
 
   grafana:
-    container_name: yosefrow_prometheus-grafana
+    container_name: ${GROUP}_${PROJECT}-grafana
+    hostname: grafana
     image: grafana/grafana:6.0.1
     env_file:
       - ./.env
