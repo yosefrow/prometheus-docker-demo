@@ -15,6 +15,15 @@ To run the demo, just follow these steps:
 2. copy .env.example to .env and configure it by exposing available ports, etc.
 3. run `./build.sh` from the terminal. If you do not create a .env file, .env.example will be used
 
+The Grafana main dashboard can be reached by visiting the url of the service ie. http://localhost:3000 by default.
+
+The default user and admin are
+
+- User: admin
+- Password: 1234
+
+The default Test dashboard is named "Test Dashboard"
+
 When you are finished testing, you can purge the volumes that have been created by this demo by running `./purge.sh`
 
 # Architecture
