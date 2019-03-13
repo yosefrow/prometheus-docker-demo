@@ -45,4 +45,10 @@ Prometheus endpoints (ie metrics endpoints of exposers/exporters) can be configu
         labels:
             group: 'my_group'
 ```
+
+# Code Credits
+
+Thanks to https://github.com/vegasbrianc/prometheus.git for providing guidance on how to automatically provision Grafana dashboards
+
+https://github.com/prometheus/client_python was used to create an example exposer/exporter service.
  
