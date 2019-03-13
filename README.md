@@ -9,7 +9,11 @@ This project comprises of three components which together create an interactive 
 
 The deployment scripts are designed to run in Linux
 
-To run the demo, just git clone the repository to a local Linux environment and run `./build.sh` from the terminal.
+To run the demo, just follow these steps:
+
+1. git clone the repository to a local Linux environment 
+2. copy .env.example to .env and configure it by exposing available ports, etc.
+3. run `./build.sh` from the terminal. If you do not create a .env file, .env.example will be used
 
 When you are finished testing, you can purge the volumes that have been created by this demo by running `./purge.sh`
 
