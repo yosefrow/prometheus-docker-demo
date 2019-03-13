@@ -22,7 +22,9 @@ The default user and admin are
 - User: admin
 - Password: 1234
 
-The default Test dashboard is named "Test Dashboard"
+The default Test dashboard is named "Test Dashboard" and assuming you deployed to your localhost can be reached by default here:
+
+http://localhost:3000/d/3yCkNeCmkdd/test-dashboard?orgId=1&refresh=2s
 
 When you are finished testing, you can purge the volumes that have been created by this demo by running `./purge.sh`
 
