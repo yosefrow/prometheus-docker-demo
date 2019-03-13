@@ -9,7 +9,7 @@ services:
     env_file:
       - ./.env
     ports:
-      - 8000:8000
+      - $EXPOSER_PORT_EXTERNAL:8000
     restart: unless-stopped
 
   prometheus:
@@ -24,7 +24,7 @@ services:
     depends_on:
       - exposer
     ports:
-      - 9090:9090
+      - $PROMETHEUS_PORT_EXTERNAL:9090
     restart: unless-stopped
 
   grafana:
@@ -39,7 +39,7 @@ services:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning/:/etc/grafana/provisioning/
     ports:
-      - 3000:3000
+      - $GRAFANA_PORT_EXTERNAL:3000
     restart: unless-stopped
 
 volumes:
