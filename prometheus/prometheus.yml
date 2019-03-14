@@ -18,25 +18,12 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
 
-  - job_name: 'prometheus-exporter-js'
-
-    # Override the global default and scrape targets from this job every 5 seconds.
-    scrape_interval: 5s
-
-    # which path to scrape
-    metrics_path: '/metrics'
-
-    static_configs:
-      - targets: ['35.193.223.223:80']
-        labels:
-            group: 'js_test'
-
   - job_name: 'prometheus-exporter-py'
 
     # Override the global default and scrape targets from this job every 5 seconds.
     scrape_interval: 5s
 
     static_configs:
-      - targets: ['128.199.39.187:8000']
+      - targets: ['exposer:8000']
         labels:
             group: 'py_test'
